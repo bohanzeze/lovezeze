@@ -4,9 +4,9 @@ import json
 from flask import Flask, request, render_template, redirect, session, flash
 from redis import StrictRedis
 import hashlib
+from datetime import datetime
 
 from qiniu import Auth, put_data
-import qiniu.config
 import uuid
 
 app = Flask(__name__)
@@ -57,7 +57,9 @@ def register():
     if not user:
         redis_client.hmset('users:' + username, {
             'password': encoded_password,
-            'username': username
+            'username': username,
+            'created_at': datetime.now().isoformat(),
+            'updated_at': datetime.now().isoformat()
         })
         flash('注册成功!', category='success')
         return redirect('/login')
@@ -79,6 +81,8 @@ def login():
 
     user = redis_client.hgetall('users:' + username)
     if user and encoded_password == user.get('password'):
+        redis_client.hset('users:' + username, 'updated_at', datetime.now().isoformat())
+
         session['user'] = user
         flash('登录成功!', category='success')
         return redirect('/')
@@ -105,7 +109,8 @@ def create_story():
         story_id = redis_client.incr('users:%s:stories:next-id' % user.get('username'))
         redis_client.hmset('users:%s:stories:%s' % (user.get('username'), story_id), {
             'url': url,
-            'description': description
+            'description': description,
+            'created_at': datetime.now().isoformat()
         })
         redis_client.rpush('users:%s:stories' % user.get('username'), story_id)
         flash('上传成功!', category='success')
