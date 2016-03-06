@@ -37,10 +37,13 @@ def login_required(f):
 
 
 @app.route('/')
-@login_required
 def hello_world():
     return render_template('index.html')
 
+@app.route('/stories')
+@login_required
+def stories():
+    return render_template('stories.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -114,7 +117,7 @@ def create_story():
         })
         redis_client.rpush('users:%s:stories' % user.get('username'), story_id)
         flash('上传成功!', category='success')
-        return redirect('/')
+        return redirect('/stories')
     else:
         return render_template('create_story.html')
 
