@@ -1,3 +1,41 @@
-body {
-    background-color: aqua;
-}
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,pre,form,input,textarea,th,td,select{margin: 0;padding: 0;font-family: arial;}
+em{font-style: normal;}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: none;vertical-align: top;}
+table{border-collapse: collapse;}
+textarea{resize: none;overflow: auto;}
+input,textarea{resize: none;overflow: auto;}
+/* »¶Ó­Ò³Ãæ */
+.clearfix:after{ content: ""; display: block; clear: both; }
+.wel h1{ width: 520px; margin: 130px auto 0; font-weight: normal; }
+.wel .tips{ width: 530px; margin: 50px auto 0; }
+.wel .tips .img{ float: left; padding-left: 10px; }
+.wel .tips img{ width: 180px; height: 180px; }
+.wel .tips .btn{ float: right; width: 200px; text-align: center; line-height: 30px; padding-right: 15px; }
+.wel a:nth-of-type(1){ margin-top: 80px; }
+.wel a:nth-of-type(2){ margin-top: 20px; }
+.wel .tips .btn a{ display: block; width: 200px; height: 30px; background: -webkit-linear-gradient(#666,#000); color: #fff; border-radius: 5px; }
+/* µÇÂ¼ºÍ×¢²áÒ³Ãæ */
+.login-wrap{ width: 400px; height: 400px; border: 2px solid #000000; margin: 50px auto 0; display: -webkit-box;
+             -webkit-box-pack: center; -webkit-box-align: center; }
+.login{ width: 220px; }
+.login input{ width: 190px; margin-top: 10px; outline: none; padding: 0 5px; }
+.login input[type="submit"]{ width: 204px; height: 30px; }
+/* ÉÏ´«Í¼Æ¬Ò³Ãæ */
+.create-wrap{ width: 400px; height: 400px; border: 2px solid #000000; margin: 50px auto 0; display: -webkit-box;
+    -webkit-box-pack: center; -webkit-box-align: center; }
+.create-login{ width: 220px; }
+.create-login label input{ display: none; }
+.create-login label span{ width: 200px; height: 30px; background: #e1e1e1; display: block; border: 1px solid #666666; text-align: center; line-height: 30px; margin-bottom: 20px; }
+.create-login textarea{ width: 200px; }
+.create-login input[type="submit"]{ width: 200px; height: 30px; margin-top: 10px; }
+/* Ê×Ò³ */
+.text{ font-size: 30px; font-family: "Î¢ÈíÑÅºÚ"; width: 300px; margin: 20px auto; }
+.pic-list{ width: 250px; margin: 0 auto; }
+.pic-list li{ }
+.pic-list li div{ margin-bottom: 40px; }
+.pic-list li img{ width: 240px; height: 240px; }
+.pic-list li span{ display: block; margin-top: 10px; }
+.link{ position: absolute; width: 60px; height: 30px; background: #666666; color: #ffffff; right: 30px; top: 0;
+       border-radius: 4px; line-height: 30px; text-align: center; }

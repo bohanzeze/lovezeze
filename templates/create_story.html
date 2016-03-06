@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Create story</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 <body>
-
-<form method="post" enctype="multipart/form-data">
-
-    <input type="file" name="file">
-    <textarea name="description"></textarea>
-    <input type="submit" value="提交">
-</form>
+<div class="create-wrap">
+    <div class="create-login">
+        <form method="post" enctype="multipart/form-data">
+            <label>
+                <input type="file" name="file" accept="image/*">
+                <span>上传图片</span>
+            </label>
+            <textarea name="description" placeholder="写点内容吧......" rows="8"></textarea><br/>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</div>
 </body>
 </html>

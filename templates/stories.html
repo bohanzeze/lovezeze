@@ -3,8 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Stories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <script>
+        window.onload=function(){
+            var oUl=document.getElementById("list");
+            var oLi=oUl.getElementsByTagName("li")[0];
+            var iPage=1;
+            var b=true;
+            getList();
+            function getList(){
+                var xhr=new XMLHttpRequest();
+                xhr.open("get","http://localhost:5000/api/stories?page="+iPage,true);
+                xhr.send();
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4){
+                        if(xhr.status==200){
+                            var data=JSON.parse(xhr.responseText);
+                            for(var i=0;i<data.length;i++){
+                                var oDiv=document.createElement("div");
+                                var oImg=document.createElement("img");
+                                oImg.src=data[i].url;
+                                oDiv.appendChild(oImg);
+                                var oSpan=document.createElement("span");
+                                oSpan.innerHTML=data[i].created_at;
+                                oDiv.appendChild(oSpan);
+                                oLi.appendChild(oDiv);
+                            }
+                        }
+                    }
+                };
+                b=true;
+            }
+            window.onscroll=function(){
+                var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+                if(getTop(oLi)+oLi.offsetHeight<scrollTop+document.documentElement.clientHeight){
+                    if(b){
+                        b=false;
+                        iPage++;
+                        getList();
+                    }
+                }
+                function getTop(obj){
+                    var iTop=0;
+                    while(obj){
+                        iTop=iTop+obj.offsetTop;
+                        obj=obj.offsetParent;
+                    }
+                    return iTop;
+                }
+            };
+        };
+    </script>
 </head>
-<body>
-
+<body style="position: relative;">
+<p class="text">记录生活的点点滴滴</p>
+<div class="pic-list">
+    <ul class="list" id="list">
+        <li>
+            <!--<div>-->
+                <!--<img src="{{ url_for('static', filename='img/wel.JPG') }}"><br/>-->
+                <!--<span>上传时间：2016.3.6</span>-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<img src="{{ url_for('static', filename='img/wel.JPG') }}"><br/>-->
+                <!--<span>上传时间：2016.3.6</span>-->
+            <!--</div>-->
+        </li>
+    </ul>
+</div>
+<a class="link" href="/story">新建+</a>
 </body>
 </html>

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 <body>
-    <form method="post">
-        <input name="username">
-        <input name="password" type="password">
-        <input type="submit" value="注册">
-    </form>
+<div class="login-wrap">
+    <div class="login">
+        <form method="post">
+            <input name="username" placeholder="请输入用户名"><br/>
+            <input name="password" type="password" placeholder="请输入密码"><br/>
+            <input type="submit" value="注册">
+        </form>
+    </div>
+</div>
 </body>
 </html>

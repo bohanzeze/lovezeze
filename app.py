@@ -88,7 +88,7 @@ def login():
 
         session['user'] = user
         flash('登录成功!', category='success')
-        return redirect('/')
+        return redirect('/stories')
     else:
         flash('用户名或密码错误!', category='error')
         return render_template('login.html')
@@ -126,7 +126,7 @@ def create_story():
 @login_required
 def get_stories():
     page = int(request.args.get('page', 1))
-    size = 10
+    size = 2
 
     user = session.get('user')
     story_ids = redis_client.lrange('users:%s:stories' % user.get('username'), (page - 1) * size, page * size)
