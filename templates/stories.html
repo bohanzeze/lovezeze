@@ -13,7 +13,7 @@
             getList();
             function getList(){
                 var xhr=new XMLHttpRequest();
-                xhr.open("get","http://localhost:5000/api/stories?page="+iPage,true);
+                xhr.open("get","/api/stories?page="+iPage,true);
                 xhr.send();
                 xhr.onreadystatechange=function(){
                     if(xhr.readyState==4){
