@@ -22,7 +22,7 @@
                             for(var i=0;i<data.length;i++){
                                 var oDiv=document.createElement("div");
                                 var oImg=document.createElement("img");
-                                oImg.src=data[i].url;
+                                oImg.src=data[i].url + '?imageView2/2/w/240';
                                 oDiv.appendChild(oImg);
                                 var oSpan=document.createElement("span");
                                 oSpan.innerHTML=data[i].created_at;
